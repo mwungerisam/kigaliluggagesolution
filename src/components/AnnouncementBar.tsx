@@ -1,41 +1,32 @@
 import React from 'react';
-import { Truck, MessageCircle, MapPin } from 'lucide-react';
 import { BUSINESS_CONFIG } from '../config/business';
 
 export const AnnouncementBar: React.FC = () => {
   return (
-    <div id="announcement-bar" className="bg-slate-900 text-slate-200 text-xs font-medium py-2 px-4 border-b border-slate-800">
-      <div className="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-1 sm:gap-4">
-        {/* Left: Free delivery statement */}
-        <div className="flex items-center gap-2">
-          <span className="inline-flex items-center justify-center bg-purple-950 text-purple-300 px-2 py-0.5 rounded text-[11px] font-bold border border-purple-800 tracking-wide uppercase">
-            Special
+    <div id="announcement-bar" className="bg-[#18181B] text-[#E4E4E7] text-[11px] font-medium tracking-wide py-2 px-4 border-b border-[#27272A]">
+      <div className="max-w-7xl mx-auto flex items-center justify-between text-center sm:text-left">
+        <div className="flex items-center gap-2 mx-auto sm:mx-0">
+          <span className="font-semibold text-white tracking-wider uppercase text-[10px]">
+            {BUSINESS_CONFIG.deliveryPromise}
           </span>
-          <div className="flex items-center gap-1.5 font-semibold text-white">
-            <Truck className="w-3.5 h-3.5 text-purple-400 shrink-0" />
-            <span>{BUSINESS_CONFIG.deliveryPromise}</span>
-          </div>
-          <span className="hidden md:inline text-slate-400">•</span>
-          <span className="hidden md:inline text-slate-300">Fast, convenient delivery directly to your door</span>
+          <span className="text-[#71717A] hidden md:inline">•</span>
+          <span className="text-[#A1A1AA] hidden md:inline">
+            Complimentary doorstep delivery in Kigali • Downtown Showroom
+          </span>
         </div>
 
-        {/* Right: Kigali location & WhatsApp direct contact */}
-        <div className="flex items-center gap-4 text-slate-300">
-          <span className="hidden lg:flex items-center gap-1">
-            <MapPin className="w-3 h-3 text-slate-400" />
-            <span>{BUSINESS_CONFIG.location}</span>
-          </span>
-          <span className="hidden lg:inline text-slate-600">|</span>
+        <div className="hidden sm:flex items-center gap-4 text-[#A1A1AA]">
+          <span className="text-[11px]">Downtown Kigali</span>
+          <span className="text-[#3F3F46]">|</span>
           <a
             href={`https://wa.me/${BUSINESS_CONFIG.whatsappNumber}?text=${encodeURIComponent(
-              'Hello Kigali Luggage Solution, I have an inquiry about your suitcases.'
+              'Hello Kigali Luggage Solution, I would like to inquire about luggage.'
             )}`}
             target="_blank"
             rel="noopener noreferrer"
-            className="flex items-center gap-1.5 text-emerald-400 hover:text-emerald-300 transition-colors"
+            className="text-white hover:text-[#D4D4D8] transition-colors"
           >
-            <MessageCircle className="w-3.5 h-3.5" />
-            <span>Order via WhatsApp: {BUSINESS_CONFIG.phoneDisplay}</span>
+            WhatsApp: {BUSINESS_CONFIG.phoneDisplay}
           </a>
         </div>
       </div>

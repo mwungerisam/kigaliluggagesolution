@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import { X, ShoppingBag, MessageCircle, Truck, Check, ShieldCheck, ArrowRight } from 'lucide-react';
+import { X, Check } from 'lucide-react';
 import { useShop } from '../context/ShopContext';
 import { useCart } from '../context/CartContext';
-import { formatRWF, getProductWhatsAppUrl, BUSINESS_CONFIG } from '../config/business';
+import { formatRWF, getProductWhatsAppUrl } from '../config/business';
 
 export const ProductQuickView: React.FC = () => {
   const { quickViewProduct, closeQuickView, navigateToProduct } = useShop();
@@ -46,23 +46,23 @@ export const ProductQuickView: React.FC = () => {
   });
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/60 backdrop-blur-xs animate-in fade-in">
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/40 animate-in fade-in">
       <div
-        className="relative bg-white w-full max-w-3xl rounded-3xl shadow-2xl border border-stone-200 overflow-hidden flex flex-col md:flex-row max-h-[90vh]"
+        className="relative bg-white w-full max-w-3xl border border-[#E4E4E7] overflow-hidden flex flex-col md:flex-row max-h-[90vh]"
         onClick={(e) => e.stopPropagation()}
       >
         {/* Close Button */}
         <button
           onClick={closeQuickView}
-          className="absolute top-4 right-4 z-20 p-2 rounded-full bg-stone-100 hover:bg-stone-200 text-slate-700 transition-colors"
+          className="absolute top-4 right-4 z-20 p-2 text-[#71717A] hover:text-[#18181B] transition-colors cursor-pointer"
           aria-label="Close modal"
         >
           <X className="w-5 h-5" />
         </button>
 
         {/* Product Images Column */}
-        <div className="md:w-1/2 bg-stone-100 p-6 flex flex-col justify-between items-center">
-          <div className="w-full aspect-square flex items-center justify-center relative overflow-hidden rounded-2xl bg-white/80 p-4">
+        <div className="md:w-1/2 bg-[#F4F4F5] p-6 flex flex-col justify-between items-center border-b md:border-b-0 md:border-r border-[#E4E4E7]">
+          <div className="w-full aspect-square flex items-center justify-center relative overflow-hidden bg-white p-4 border border-[#E4E4E7]">
             <img
               src={quickViewProduct.images[activeImage] || quickViewProduct.images[0]}
               alt={quickViewProduct.name}
@@ -78,10 +78,10 @@ export const ProductQuickView: React.FC = () => {
                 <button
                   key={idx}
                   onClick={() => setActiveImage(idx)}
-                  className={`w-14 h-14 rounded-xl border-2 overflow-hidden bg-white p-1 transition-all ${
+                  className={`w-12 h-12 border overflow-hidden bg-white p-1 transition-all cursor-pointer ${
                     activeImage === idx
-                      ? 'border-purple-600 shadow-sm scale-105'
-                      : 'border-stone-200 opacity-70 hover:opacity-100'
+                      ? 'border-[#18181B]'
+                      : 'border-[#E4E4E7] opacity-60 hover:opacity-100'
                   }`}
                 >
                   <img
@@ -98,54 +98,40 @@ export const ProductQuickView: React.FC = () => {
 
         {/* Product Details Column */}
         <div className="md:w-1/2 p-6 overflow-y-auto flex flex-col justify-between">
-          <div>
-            <div className="flex items-center justify-between text-xs mb-2">
-              <span className="font-bold text-purple-700 uppercase tracking-wider">
+          <div className="space-y-4">
+            <div>
+              <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-[#71717A] block mb-1">
                 {quickViewProduct.category}
               </span>
-              <span className="font-semibold text-emerald-600 bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200">
-                In Stock • Kigali
-              </span>
-            </div>
 
-            <h2 className="text-xl font-extrabold text-slate-900 tracking-tight leading-snug">
-              {quickViewProduct.name}
-            </h2>
+              <h2 className="text-lg font-bold text-[#18181B] tracking-tight uppercase">
+                {quickViewProduct.name}
+              </h2>
 
-            {/* Price */}
-            <div className="mt-2 flex items-baseline gap-2">
-              <span className="text-2xl font-black text-slate-900">
-                {formatRWF(quickViewProduct.price)}
-              </span>
-              {quickViewProduct.originalPrice && (
-                <span className="text-sm text-slate-400 line-through">
-                  {formatRWF(quickViewProduct.originalPrice)}
+              {/* Price */}
+              <div className="mt-2 flex items-baseline gap-2">
+                <span className="text-xl font-bold text-[#18181B]">
+                  {formatRWF(quickViewProduct.price)}
                 </span>
-              )}
-            </div>
-
-            {/* Free Delivery Callout */}
-            <div className="mt-3 p-2.5 bg-purple-50 rounded-xl border border-purple-100 flex items-center gap-2.5">
-              <Truck className="w-4 h-4 text-purple-700 shrink-0" />
-              <div className="text-xs text-purple-950">
-                <span className="font-bold">{BUSINESS_CONFIG.deliveryPromise}</span>
-                <span className="block text-[11px] text-purple-800">
-                  Order now and get it delivered directly to your doorstep in Kigali.
-                </span>
+                {quickViewProduct.originalPrice && (
+                  <span className="text-xs text-[#71717A] line-through">
+                    {formatRWF(quickViewProduct.originalPrice)}
+                  </span>
+                )}
               </div>
             </div>
 
-            <p className="mt-3 text-xs text-slate-600 leading-relaxed">
+            <p className="text-xs text-[#71717A] leading-relaxed">
               {quickViewProduct.shortDescription}
             </p>
 
             {/* Color selection */}
             {quickViewProduct.colors && quickViewProduct.colors.length > 0 && (
-              <div className="mt-4">
-                <div className="text-xs font-bold text-slate-700 mb-2">
-                  Select Color: <span className="text-purple-700">{selectedColor}</span>
+              <div>
+                <div className="text-xs text-[#71717A] mb-2">
+                  Color: <span className="font-semibold text-[#18181B]">{selectedColor}</span>
                 </div>
-                <div className="flex flex-wrap gap-2">
+                <div className="flex flex-wrap gap-1.5">
                   {quickViewProduct.colors.map((c) => (
                     <button
                       key={c.name}
@@ -156,17 +142,13 @@ export const ProductQuickView: React.FC = () => {
                           setActiveImage(c.imageIndex);
                         }
                       }}
-                      className={`px-3 py-1.5 rounded-lg text-xs font-medium border flex items-center gap-1.5 transition-all ${
+                      className={`px-3 py-1 text-xs border transition-colors cursor-pointer ${
                         selectedColor === c.name
-                          ? 'border-purple-600 bg-purple-50 text-purple-900 font-bold'
-                          : 'border-stone-200 text-slate-700 hover:bg-stone-50'
+                          ? 'border-[#18181B] bg-[#18181B] text-white font-medium'
+                          : 'border-[#E4E4E7] text-[#18181B] hover:border-[#18181B]'
                       }`}
                     >
-                      <span
-                        className="w-3 h-3 rounded-full border border-stone-300"
-                        style={{ backgroundColor: c.hex }}
-                      />
-                      <span>{c.name}</span>
+                      {c.name}
                     </button>
                   ))}
                 </div>
@@ -175,20 +157,20 @@ export const ProductQuickView: React.FC = () => {
 
             {/* Size selection */}
             {quickViewProduct.sizes && quickViewProduct.sizes.length > 0 && (
-              <div className="mt-4">
-                <div className="text-xs font-bold text-slate-700 mb-2">
-                  Select Size: <span className="text-purple-700">{selectedSize}</span>
+              <div>
+                <div className="text-xs text-[#71717A] mb-2">
+                  Size: <span className="font-semibold text-[#18181B]">{selectedSize}</span>
                 </div>
-                <div className="flex flex-wrap gap-2">
+                <div className="flex flex-wrap gap-1.5">
                   {quickViewProduct.sizes.map((s) => (
                     <button
                       key={s}
                       type="button"
                       onClick={() => setSelectedSize(s)}
-                      className={`px-3 py-1.5 rounded-lg text-xs font-medium border transition-all ${
+                      className={`px-3 py-1 text-xs border transition-colors cursor-pointer ${
                         selectedSize === s
-                          ? 'border-purple-600 bg-purple-50 text-purple-900 font-bold'
-                          : 'border-stone-200 text-slate-700 hover:bg-stone-50'
+                          ? 'border-[#18181B] bg-[#18181B] text-white font-medium'
+                          : 'border-[#E4E4E7] text-[#18181B] hover:border-[#18181B]'
                       }`}
                     >
                       {s}
@@ -199,21 +181,21 @@ export const ProductQuickView: React.FC = () => {
             )}
 
             {/* Quantity */}
-            <div className="mt-4 flex items-center gap-3">
-              <span className="text-xs font-bold text-slate-700">Quantity:</span>
-              <div className="flex items-center border border-stone-300 rounded-lg overflow-hidden bg-stone-50">
+            <div className="flex items-center gap-3">
+              <span className="text-xs text-[#71717A]">Quantity:</span>
+              <div className="flex items-center border border-[#E4E4E7]">
                 <button
                   onClick={() => setQuantity((q) => Math.max(1, q - 1))}
-                  className="px-2.5 py-1 text-slate-700 hover:bg-stone-200 text-sm font-bold"
+                  className="px-2.5 py-1 text-[#18181B] hover:bg-[#F4F4F5] text-xs font-semibold cursor-pointer"
                 >
                   -
                 </button>
-                <span className="px-3 py-1 text-xs font-bold text-slate-900 min-w-[28px] text-center">
+                <span className="px-3 py-1 text-xs font-bold text-[#18181B] min-w-[28px] text-center">
                   {quantity}
                 </span>
                 <button
                   onClick={() => setQuantity((q) => q + 1)}
-                  className="px-2.5 py-1 text-slate-700 hover:bg-stone-200 text-sm font-bold"
+                  className="px-2.5 py-1 text-[#18181B] hover:bg-[#F4F4F5] text-xs font-semibold cursor-pointer"
                 >
                   +
                 </button>
@@ -222,26 +204,23 @@ export const ProductQuickView: React.FC = () => {
           </div>
 
           {/* Action CTAs */}
-          <div className="mt-6 pt-4 border-t border-stone-100 flex flex-col gap-2.5">
+          <div className="mt-6 pt-4 border-t border-[#E4E4E7] flex flex-col gap-2">
             <div className="grid grid-cols-2 gap-2">
               <button
                 onClick={handleAddToCart}
-                className={`py-2.5 px-4 rounded-xl text-xs font-bold transition-all flex items-center justify-center gap-2 ${
+                className={`py-3 px-4 text-xs font-bold uppercase tracking-wider transition-colors cursor-pointer flex items-center justify-center gap-1.5 ${
                   isAdded
-                    ? 'bg-emerald-600 text-white'
-                    : 'bg-slate-900 hover:bg-purple-900 text-white shadow-md'
+                    ? 'bg-black text-white'
+                    : 'bg-[#18181B] hover:bg-black text-white'
                 }`}
               >
                 {isAdded ? (
                   <>
-                    <Check className="w-4 h-4" />
-                    <span>Added to Cart!</span>
+                    <Check className="w-3.5 h-3.5" />
+                    <span>Added</span>
                   </>
                 ) : (
-                  <>
-                    <ShoppingBag className="w-4 h-4" />
-                    <span>Add to Cart</span>
-                  </>
+                  <span>Add to Bag</span>
                 )}
               </button>
 
@@ -249,19 +228,17 @@ export const ProductQuickView: React.FC = () => {
                 href={whatsappUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="py-2.5 px-4 rounded-xl text-xs font-bold bg-emerald-600 hover:bg-emerald-700 text-white transition-colors flex items-center justify-center gap-2 shadow-md"
+                className="py-3 px-4 text-xs font-bold uppercase tracking-wider bg-white hover:bg-[#F4F4F5] text-[#18181B] border border-[#E4E4E7] transition-colors flex items-center justify-center cursor-pointer"
               >
-                <MessageCircle className="w-4 h-4" />
-                <span>Order on WhatsApp</span>
+                <span>WhatsApp Order</span>
               </a>
             </div>
 
             <button
               onClick={handleViewFullDetails}
-              className="text-xs font-semibold text-purple-700 hover:text-purple-800 flex items-center justify-center gap-1 py-1 transition-colors"
+              className="text-xs text-[#71717A] hover:text-[#18181B] text-center py-1 transition-colors cursor-pointer uppercase tracking-wider text-[11px]"
             >
-              <span>View full product specifications & photos</span>
-              <ArrowRight className="w-3.5 h-3.5" />
+              View Full Product Details →
             </button>
           </div>
         </div>

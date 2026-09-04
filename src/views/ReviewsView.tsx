@@ -1,13 +1,5 @@
 import React, { useState } from 'react';
-import {
-  Star,
-  CheckCircle2,
-  MapPin,
-  MessageCircle,
-  Instagram,
-  ThumbsUp,
-  Filter,
-} from 'lucide-react';
+import { Star } from 'lucide-react';
 import { CUSTOMER_REVIEWS } from '../data/reviews';
 import { BUSINESS_CONFIG } from '../config/business';
 import { useShop } from '../context/ShopContext';
@@ -17,8 +9,6 @@ export const ReviewsView: React.FC = () => {
   const [selectedRating, setSelectedRating] = useState<number | 'all'>('all');
 
   const averageRating = 4.9;
-  const totalReviews = CUSTOMER_REVIEWS.length;
-
   const filteredReviews =
     selectedRating === 'all'
       ? CUSTOMER_REVIEWS
@@ -27,73 +17,60 @@ export const ReviewsView: React.FC = () => {
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-16 space-y-12">
       {/* Header */}
-      <div className="text-center max-w-2xl mx-auto space-y-3">
-        <span className="text-xs font-extrabold text-purple-700 uppercase tracking-wider">
-          Trusted by Kigali Residents & Travelers
+      <div>
+        <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-[#71717A] block">
+          Client Feedback
         </span>
-        <h1 className="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">
-          Customer Reviews & Experiences
+        <h1 className="text-2xl sm:text-3xl font-bold text-[#18181B] tracking-tight uppercase mt-1">
+          Reviews & Experiences
         </h1>
-        <p className="text-xs sm:text-sm text-slate-500">
-          Read real feedback from customers who have purchased suitcases, carry-ons, and luggage sets from Kigali Luggage Solution.
+        <p className="text-xs text-[#71717A] mt-1">
+          Verified customer feedback from Kigali residents and travelers.
         </p>
       </div>
 
-      {/* Review Summary Scorecard */}
-      <div className="bg-white p-8 rounded-3xl border border-stone-200 shadow-xs grid grid-cols-1 md:grid-cols-3 gap-8 items-center">
-        <div className="text-center md:text-left space-y-2">
-          <div className="flex items-center justify-center md:justify-start gap-2">
-            <span className="text-5xl font-black text-slate-900 tracking-tight">
+      {/* Review Summary */}
+      <div className="bg-white p-6 sm:p-8 border border-[#E4E4E7] grid grid-cols-1 md:grid-cols-3 gap-6 items-center">
+        <div className="space-y-1">
+          <div className="flex items-baseline gap-2">
+            <span className="text-4xl font-bold text-[#18181B] tracking-tight">
               {averageRating}
             </span>
-            <span className="text-sm font-bold text-slate-400">/ 5.0</span>
+            <span className="text-xs text-[#71717A]">/ 5.0 Rating</span>
           </div>
-          <div className="flex items-center justify-center md:justify-start gap-1 text-amber-400">
+          <div className="flex items-center gap-1 text-[#18181B]">
             {[...Array(5)].map((_, i) => (
-              <Star key={i} className="w-5 h-5 fill-amber-400" />
+              <Star key={i} className="w-4 h-4 fill-current" />
             ))}
           </div>
-          <p className="text-xs text-slate-500 font-medium">
-            Based on verified customer orders and Instagram reviews
+          <p className="text-[11px] text-[#71717A]">
+            Based on customer deliveries and Instagram client tags.
           </p>
         </div>
 
-        {/* Breakdown */}
-        <div className="space-y-1.5 text-xs text-slate-600">
-          <div className="flex items-center gap-2">
-            <span className="w-12 text-slate-500">5 Stars</span>
-            <div className="flex-1 h-2 rounded-full bg-stone-100 overflow-hidden">
-              <div className="w-[90%] h-full bg-amber-400 rounded-full" />
-            </div>
-            <span className="font-bold text-slate-800">90%</span>
+        <div className="space-y-1 text-xs text-[#71717A]">
+          <div className="flex items-center justify-between">
+            <span>5 Stars</span>
+            <span className="font-semibold text-[#18181B]">90%</span>
           </div>
-          <div className="flex items-center gap-2">
-            <span className="w-12 text-slate-500">4 Stars</span>
-            <div className="flex-1 h-2 rounded-full bg-stone-100 overflow-hidden">
-              <div className="w-[10%] h-full bg-amber-400 rounded-full" />
-            </div>
-            <span className="font-bold text-slate-800">10%</span>
+          <div className="flex items-center justify-between">
+            <span>4 Stars</span>
+            <span className="font-semibold text-[#18181B]">10%</span>
           </div>
-          <div className="flex items-center gap-2 text-slate-400">
-            <span className="w-12">3 Stars</span>
-            <div className="flex-1 h-2 rounded-full bg-stone-100 overflow-hidden">
-              <div className="w-[0%] h-full bg-amber-400 rounded-full" />
-            </div>
+          <div className="flex items-center justify-between">
+            <span>3 Stars</span>
             <span>0%</span>
           </div>
         </div>
 
-        {/* Direct CTA */}
-        <div className="text-center md:text-right space-y-2">
-          <span className="text-xs text-slate-500 block">Want to share your experience?</span>
+        <div className="text-left md:text-right">
           <a
             href={BUSINESS_CONFIG.instagramUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 px-5 py-2.5 bg-purple-50 text-purple-700 hover:bg-purple-100 rounded-xl text-xs font-bold transition-colors border border-purple-200"
+            className="inline-block text-xs font-bold uppercase tracking-wider text-[#18181B] hover:underline"
           >
-            <Instagram className="w-4 h-4" />
-            <span>Tag us on Instagram</span>
+            Tag @{BUSINESS_CONFIG.instagramHandle} →
           </a>
         </div>
       </div>
@@ -103,40 +80,34 @@ export const ReviewsView: React.FC = () => {
         {filteredReviews.map((review) => (
           <div
             key={review.id}
-            className="bg-white p-6 rounded-2xl border border-stone-200 shadow-xs flex flex-col justify-between space-y-4"
+            className="bg-white p-6 border border-[#E4E4E7] flex flex-col justify-between space-y-4"
           >
             <div className="space-y-3">
-              <div className="flex items-center justify-between">
-                <div className="flex items-center gap-1 text-amber-400">
+              <div className="flex items-center justify-between text-xs">
+                <div className="flex items-center gap-0.5 text-[#18181B]">
                   {[...Array(review.rating)].map((_, i) => (
-                    <Star key={i} className="w-4 h-4 fill-amber-400" />
+                    <Star key={i} className="w-3.5 h-3.5 fill-current" />
                   ))}
                 </div>
-                <span className="text-[10px] text-slate-400">{review.date}</span>
+                <span className="text-[10px] text-[#71717A]">{review.date}</span>
               </div>
 
-              <p className="text-sm text-slate-700 leading-relaxed italic">
+              <p className="text-xs text-[#52525B] leading-relaxed">
                 "{review.comment}"
               </p>
             </div>
 
-            <div className="pt-4 border-t border-stone-100 space-y-2">
+            <div className="pt-4 border-t border-[#F4F4F5] space-y-1 text-xs">
               <div className="flex items-center justify-between">
-                <div>
-                  <h4 className="font-bold text-slate-900 text-xs">{review.author}</h4>
-                  <span className="text-slate-500 text-[11px] flex items-center gap-1 mt-0.5">
-                    <MapPin className="w-3 h-3 text-purple-600" />
-                    {review.location}
-                  </span>
-                </div>
-                <span className="text-[10px] font-semibold text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200">
-                  Verified Order
+                <h4 className="font-bold text-[#18181B]">{review.author}</h4>
+                <span className="text-[10px] text-[#71717A] uppercase tracking-wider">
+                  {review.location}
                 </span>
               </div>
 
               {review.productPurchased && (
-                <div className="text-[11px] text-purple-800 bg-purple-50 px-2.5 py-1 rounded-lg">
-                  Purchased: <strong>{review.productPurchased}</strong>
+                <div className="text-[11px] text-[#71717A]">
+                  Item: <span className="text-[#18181B] font-medium">{review.productPurchased}</span>
                 </div>
               )}
             </div>
@@ -144,20 +115,19 @@ export const ReviewsView: React.FC = () => {
         ))}
       </div>
 
-      {/* Footer Callout */}
-      <div className="bg-stone-900 text-white rounded-3xl p-8 sm:p-10 text-center space-y-4 border border-stone-800">
-        <h3 className="text-xl sm:text-2xl font-extrabold text-white">
-          Experience the Difference with Kigali Luggage Solution
+      <div className="bg-white p-8 border border-[#E4E4E7] text-center space-y-3">
+        <h3 className="text-base font-bold text-[#18181B] uppercase tracking-wider">
+          Ready to order your luggage?
         </h3>
-        <p className="text-xs sm:text-sm text-slate-300 max-w-xl mx-auto">
-          Get your suitcase delivered free anywhere in Kigali and inspect it before payment.
+        <p className="text-xs text-[#71717A] max-w-md mx-auto">
+          Same-day free doorstep delivery across Kigali with cash or MoMo payment on inspection.
         </p>
-        <div className="pt-2 flex justify-center">
+        <div className="pt-2">
           <button
             onClick={() => navigateTo('shop')}
-            className="px-8 py-3.5 bg-white text-slate-950 hover:bg-stone-100 rounded-xl font-extrabold text-xs uppercase tracking-wider transition-colors shadow-md"
+            className="px-6 py-2.5 bg-[#18181B] hover:bg-black text-white text-xs font-bold uppercase tracking-wider transition-colors cursor-pointer"
           >
-            Shop Kigali Luggage Now
+            Explore Catalog
           </button>
         </div>
       </div>

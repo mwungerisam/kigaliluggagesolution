@@ -28,8 +28,8 @@ const MainContent: React.FC = () => {
   }, [currentView]);
 
   return (
-    <div className="min-h-screen flex flex-col bg-stone-50 text-slate-900 font-sans selection:bg-purple-600 selection:text-white pb-16 md:pb-0">
-      {/* 1. Top Announcement Bar (Delivery Promise) */}
+    <div className="min-h-screen flex flex-col bg-[#FAFAF9] text-[#18181B] font-sans selection:bg-[#18181B] selection:text-white pb-16 md:pb-0">
+      {/* 1. Top Announcement Bar */}
       <AnnouncementBar />
 
       {/* 2. Global Header */}

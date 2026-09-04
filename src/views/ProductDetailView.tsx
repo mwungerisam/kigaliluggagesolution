@@ -1,17 +1,10 @@
 import React, { useState } from 'react';
 import {
-  Truck,
-  ShieldCheck,
   ShoppingBag,
   MessageCircle,
   Check,
-  Share2,
   ChevronRight,
   ArrowLeft,
-  Sparkles,
-  MapPin,
-  Clock,
-  RotateCcw,
 } from 'lucide-react';
 import { useShop } from '../context/ShopContext';
 import { useCart } from '../context/CartContext';
@@ -20,16 +13,16 @@ import { PRODUCTS } from '../data/products';
 import { ProductCard } from '../components/ProductCard';
 
 export const ProductDetailView: React.FC = () => {
-  const { selectedProduct, navigateTo, navigateToCategory, navigateToProduct } = useShop();
+  const { selectedProduct, navigateTo, navigateToCategory } = useShop();
   const { addToCart } = useCart();
 
   if (!selectedProduct) {
     return (
       <div className="max-w-7xl mx-auto px-4 py-20 text-center space-y-4">
-        <h2 className="text-xl font-bold text-slate-800">Product Not Found</h2>
+        <h2 className="text-xl font-bold text-[#18181B] uppercase">Product Not Found</h2>
         <button
           onClick={() => navigateTo('shop')}
-          className="px-6 py-2.5 bg-slate-900 text-white rounded-xl text-xs font-bold"
+          className="px-6 py-2.5 bg-[#18181B] text-white text-xs font-bold uppercase tracking-wider cursor-pointer"
         >
           Return to Shop
         </button>
@@ -75,80 +68,49 @@ export const ProductDetailView: React.FC = () => {
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-12">
       {/* Breadcrumb Navigation */}
-      <nav className="flex items-center gap-2 text-xs text-slate-500 overflow-x-auto whitespace-nowrap">
-        <button onClick={() => navigateTo('home')} className="hover:text-slate-900 transition-colors">
+      <nav className="flex items-center gap-2 text-xs text-[#71717A] overflow-x-auto whitespace-nowrap pb-2 border-b border-[#E4E4E7]">
+        <button onClick={() => navigateTo('home')} className="hover:text-[#18181B] transition-colors">
           Home
         </button>
-        <ChevronRight className="w-3.5 h-3.5" />
-        <button onClick={() => navigateTo('shop')} className="hover:text-slate-900 transition-colors">
-          Shop
+        <ChevronRight className="w-3 h-3 text-[#A1A1AA]" />
+        <button onClick={() => navigateTo('shop')} className="hover:text-[#18181B] transition-colors">
+          Catalog
         </button>
-        <ChevronRight className="w-3.5 h-3.5" />
+        <ChevronRight className="w-3 h-3 text-[#A1A1AA]" />
         <button
           onClick={() => navigateToCategory(selectedProduct.category)}
-          className="hover:text-slate-900 transition-colors font-medium"
+          className="hover:text-[#18181B] transition-colors"
         >
           {selectedProduct.category}
         </button>
-        <ChevronRight className="w-3.5 h-3.5" />
-        <span className="text-slate-900 font-bold truncate max-w-[200px]">{selectedProduct.name}</span>
+        <ChevronRight className="w-3 h-3 text-[#A1A1AA]" />
+        <span className="text-[#18181B] font-semibold truncate max-w-[200px]">{selectedProduct.name}</span>
       </nav>
-
-      {/* Back button */}
-      <button
-        onClick={() => navigateTo('shop')}
-        className="inline-flex items-center gap-1.5 text-xs font-bold text-purple-700 hover:text-purple-900 transition-colors"
-      >
-        <ArrowLeft className="w-4 h-4" />
-        <span>Back to Product Catalog</span>
-      </button>
 
       {/* Main Product Container */}
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14">
-        {/* Left Column: Image Gallery (5 cols) */}
+        {/* Left Column: Image Gallery */}
         <div className="lg:col-span-6 space-y-4">
-          {/* Main Large Image */}
-          <div className="relative aspect-square w-full rounded-3xl bg-stone-100 border border-stone-200 p-8 flex items-center justify-center overflow-hidden shadow-xs">
+          <div className="relative aspect-square w-full bg-[#F4F4F5] border border-[#E4E4E7] p-8 flex items-center justify-center overflow-hidden">
             <img
               src={currentImage}
               alt={selectedProduct.name}
               referrerPolicy="no-referrer"
-              className="w-full h-full object-contain transition-all duration-300"
+              className="w-full h-full object-contain"
             />
-
-            {/* Badges */}
-            <div className="absolute top-4 left-4 flex flex-col gap-1.5 pointer-events-none">
-              {selectedProduct.bestSeller && (
-                <span className="bg-slate-900 text-white text-[11px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-lg shadow-sm">
-                  Best Seller
-                </span>
-              )}
-              {selectedProduct.isNewArrival && (
-                <span className="bg-purple-700 text-white text-[11px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-lg shadow-sm flex items-center gap-1">
-                  <Sparkles className="w-3 h-3" />
-                  New Arrival
-                </span>
-              )}
-            </div>
-
-            <div className="absolute top-4 right-4">
-              <span className="bg-emerald-50 text-emerald-800 border border-emerald-200 text-xs font-bold px-3 py-1 rounded-lg shadow-xs">
-                Free Delivery in Kigali
-              </span>
-            </div>
           </div>
 
           {/* Thumbnails */}
           {selectedProduct.images.length > 1 && (
-            <div className="flex items-center gap-3 overflow-x-auto pb-2">
+            <div className="flex items-center gap-2.5 overflow-x-auto pb-1">
               {selectedProduct.images.map((img, idx) => (
                 <button
                   key={idx}
                   onClick={() => setActiveImageIndex(idx)}
-                  className={`w-20 h-20 rounded-2xl border-2 overflow-hidden bg-white p-2 transition-all shrink-0 cursor-pointer ${
+                  className={`w-16 h-16 border bg-[#F4F4F5] p-1.5 transition-colors shrink-0 cursor-pointer ${
                     activeImageIndex === idx
-                      ? 'border-purple-600 ring-2 ring-purple-600/20 shadow-sm scale-105'
-                      : 'border-stone-200 opacity-70 hover:opacity-100'
+                      ? 'border-[#18181B]'
+                      : 'border-[#E4E4E7] opacity-60 hover:opacity-100'
                   }`}
                 >
                   <img
@@ -163,53 +125,51 @@ export const ProductDetailView: React.FC = () => {
           )}
         </div>
 
-        {/* Right Column: Information, Selectors & Ordering (7 cols) */}
+        {/* Right Column: Information, Selectors & Ordering */}
         <div className="lg:col-span-6 space-y-6">
           <div>
-            <div className="flex items-center justify-between text-xs mb-2">
-              <span className="font-extrabold text-purple-700 uppercase tracking-wider">
+            <div className="flex items-center justify-between text-[11px] mb-2">
+              <span className="font-bold uppercase tracking-[0.2em] text-[#71717A]">
                 {selectedProduct.category}
               </span>
-              <span className="font-bold text-emerald-600 bg-emerald-50 px-2.5 py-0.5 rounded-full border border-emerald-200">
-                {selectedProduct.inStock ? 'Available in Kigali' : 'Out of Stock'}
+              <span className="font-mono text-[#71717A]">
+                {selectedProduct.inStock ? 'In Stock (Kigali)' : 'Sold Out'}
               </span>
             </div>
 
-            <h1 className="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight leading-tight">
+            <h1 className="text-2xl sm:text-3xl font-bold text-[#18181B] tracking-tight uppercase">
               {selectedProduct.name}
             </h1>
 
             {/* Price in Rwandan Francs (RWF) */}
-            <div className="mt-4 flex items-baseline gap-3">
-              <span className="text-3xl sm:text-4xl font-black text-slate-900 tracking-tight">
+            <div className="mt-3 flex items-baseline gap-3">
+              <span className="text-2xl sm:text-3xl font-extrabold text-[#18181B]">
                 {formatRWF(selectedProduct.price)}
               </span>
               {selectedProduct.originalPrice && (
-                <span className="text-base text-slate-400 line-through">
+                <span className="text-sm text-[#A1A1AA] line-through">
                   {formatRWF(selectedProduct.originalPrice)}
                 </span>
               )}
-              <span className="text-xs font-semibold text-emerald-600 bg-emerald-50 px-2 py-0.5 rounded">
-                Free Delivery Included
+              <span className="text-xs text-[#71717A]">
+                • Kigali Delivery Included
               </span>
             </div>
           </div>
 
-          {/* Short description */}
-          <p className="text-sm text-slate-600 leading-relaxed">
+          <p className="text-xs sm:text-sm text-[#52525B] leading-relaxed">
             {selectedProduct.description}
           </p>
 
           {/* Color Selector */}
           {selectedProduct.colors && selectedProduct.colors.length > 0 && (
-            <div className="space-y-2 pt-2 border-t border-stone-100">
+            <div className="space-y-2 pt-3 border-t border-[#E4E4E7]">
               <div className="flex justify-between text-xs">
-                <span className="font-bold text-slate-800">
-                  Available Colors: <strong className="text-purple-700">{selectedColor}</strong>
+                <span className="text-[#71717A]">
+                  Color: <strong className="text-[#18181B] font-semibold">{selectedColor}</strong>
                 </span>
-                <span className="text-slate-400">({selectedProduct.colors.length} options)</span>
               </div>
-              <div className="flex flex-wrap gap-2.5">
+              <div className="flex flex-wrap gap-2">
                 {selectedProduct.colors.map((c) => (
                   <button
                     key={c.name}
@@ -220,14 +180,14 @@ export const ProductDetailView: React.FC = () => {
                         setActiveImageIndex(c.imageIndex);
                       }
                     }}
-                    className={`px-3.5 py-2 rounded-xl text-xs font-semibold border flex items-center gap-2 transition-all cursor-pointer ${
+                    className={`px-3 py-1.5 text-xs border flex items-center gap-2 transition-colors cursor-pointer ${
                       selectedColor === c.name
-                        ? 'border-purple-600 bg-purple-50 text-purple-900 ring-2 ring-purple-600/20 font-bold'
-                        : 'border-stone-200 text-slate-700 hover:bg-stone-50'
+                        ? 'border-[#18181B] bg-[#18181B] text-white font-medium'
+                        : 'border-[#E4E4E7] bg-white text-[#18181B] hover:border-[#18181B]'
                     }`}
                   >
                     <span
-                      className="w-3.5 h-3.5 rounded-full border border-stone-300 shrink-0"
+                      className="w-2.5 h-2.5 rounded-full border border-stone-300 shrink-0"
                       style={{ backgroundColor: c.hex }}
                     />
                     <span>{c.name}</span>
@@ -239,22 +199,22 @@ export const ProductDetailView: React.FC = () => {
 
           {/* Size Selector */}
           {selectedProduct.sizes && selectedProduct.sizes.length > 0 && (
-            <div className="space-y-2 pt-2 border-t border-stone-100">
+            <div className="space-y-2 pt-3 border-t border-[#E4E4E7]">
               <div className="flex justify-between text-xs">
-                <span className="font-bold text-slate-800">
-                  Available Sizes: <strong className="text-purple-700">{selectedSize}</strong>
+                <span className="text-[#71717A]">
+                  Size: <strong className="text-[#18181B] font-semibold">{selectedSize}</strong>
                 </span>
               </div>
-              <div className="flex flex-wrap gap-2.5">
+              <div className="flex flex-wrap gap-2">
                 {selectedProduct.sizes.map((s) => (
                   <button
                     key={s}
                     type="button"
                     onClick={() => setSelectedSize(s)}
-                    className={`px-4 py-2.5 rounded-xl text-xs font-semibold border transition-all cursor-pointer ${
+                    className={`px-3 py-1.5 text-xs border transition-colors cursor-pointer ${
                       selectedSize === s
-                        ? 'border-purple-600 bg-purple-50 text-purple-900 ring-2 ring-purple-600/20 font-bold'
-                        : 'border-stone-200 text-slate-700 hover:bg-stone-50'
+                        ? 'border-[#18181B] bg-[#18181B] text-white font-medium'
+                        : 'border-[#E4E4E7] bg-white text-[#18181B] hover:border-[#18181B]'
                     }`}
                   >
                     {s}
@@ -265,174 +225,148 @@ export const ProductDetailView: React.FC = () => {
           )}
 
           {/* Quantity Selector */}
-          <div className="flex items-center gap-4 pt-2 border-t border-stone-100">
-            <span className="text-xs font-bold text-slate-800">Quantity:</span>
-            <div className="flex items-center border border-stone-300 rounded-xl overflow-hidden bg-stone-50">
+          <div className="flex items-center gap-4 pt-3 border-t border-[#E4E4E7]">
+            <span className="text-xs text-[#71717A]">Quantity:</span>
+            <div className="flex items-center border border-[#E4E4E7] bg-white">
               <button
                 onClick={() => setQuantity((q) => Math.max(1, q - 1))}
-                className="px-3.5 py-2 text-slate-700 hover:bg-stone-200 text-sm font-bold transition-colors"
+                className="px-3 py-1 text-[#18181B] hover:bg-[#F4F4F5] text-xs font-bold transition-colors"
                 aria-label="Decrease quantity"
               >
                 -
               </button>
-              <span className="px-4 py-2 text-xs font-bold text-slate-900 min-w-[36px] text-center">
+              <span className="px-3 py-1 text-xs font-semibold text-[#18181B] min-w-[32px] text-center">
                 {quantity}
               </span>
               <button
                 onClick={() => setQuantity((q) => q + 1)}
-                className="px-3.5 py-2 text-slate-700 hover:bg-stone-200 text-sm font-bold transition-colors"
+                className="px-3 py-1 text-[#18181B] hover:bg-[#F4F4F5] text-xs font-bold transition-colors"
                 aria-label="Increase quantity"
               >
                 +
               </button>
             </div>
-            <span className="text-xs text-slate-400">
-              Total: <strong>{formatRWF(selectedProduct.price * quantity)}</strong>
+            <span className="text-xs text-[#71717A]">
+              Total: <strong className="text-[#18181B]">{formatRWF(selectedProduct.price * quantity)}</strong>
             </span>
           </div>
 
-          {/* Main Action Buttons */}
-          <div className="space-y-3 pt-3">
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-              {/* Add to Cart */}
+          {/* Action Buttons */}
+          <div className="space-y-2.5 pt-3">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
               <button
                 id="product-add-to-cart-btn"
                 onClick={handleAddToCart}
                 disabled={!selectedProduct.inStock}
-                className={`py-4 px-6 rounded-xl font-bold text-xs uppercase tracking-wider transition-all flex items-center justify-center gap-2 cursor-pointer ${
+                className={`py-3.5 px-6 font-bold text-xs uppercase tracking-wider transition-colors flex items-center justify-center gap-2 cursor-pointer ${
                   addedToast
-                    ? 'bg-emerald-600 text-white'
-                    : 'bg-slate-900 hover:bg-purple-900 text-white shadow-md hover:shadow-lg'
-                } disabled:bg-stone-300 disabled:text-stone-500`}
+                    ? 'bg-[#18181B] text-white'
+                    : 'bg-[#18181B] hover:bg-black text-white'
+                } disabled:bg-[#E4E4E7] disabled:text-[#A1A1AA]`}
               >
                 {addedToast ? (
                   <>
-                    <Check className="w-4 h-4" />
-                    <span>Added to Cart!</span>
+                    <Check className="w-3.5 h-3.5" />
+                    <span>Added</span>
                   </>
                 ) : (
                   <>
-                    <ShoppingBag className="w-4 h-4" />
-                    <span>Add to Cart</span>
+                    <ShoppingBag className="w-3.5 h-3.5" />
+                    <span>Add to Bag</span>
                   </>
                 )}
               </button>
 
-              {/* Buy Now / Direct Checkout */}
               <button
                 id="product-buy-now-btn"
                 onClick={handleBuyNow}
                 disabled={!selectedProduct.inStock}
-                className="py-4 px-6 rounded-xl font-bold text-xs uppercase tracking-wider bg-purple-700 hover:bg-purple-800 text-white shadow-md hover:shadow-lg transition-all flex items-center justify-center gap-2 cursor-pointer disabled:bg-stone-300"
+                className="py-3.5 px-6 font-bold text-xs uppercase tracking-wider bg-white hover:bg-[#F4F4F5] text-[#18181B] border border-[#E4E4E7] hover:border-[#18181B] transition-colors flex items-center justify-center gap-2 cursor-pointer disabled:opacity-50"
               >
-                <span>Buy Now</span>
-                <ChevronRight className="w-4 h-4" />
+                <span>Checkout</span>
+                <ChevronRight className="w-3.5 h-3.5" />
               </button>
             </div>
 
-            {/* ORDER VIA WHATSAPP (Major conversion mechanism) */}
             <a
               id="product-order-whatsapp-btn"
               href={whatsappUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="w-full py-4 px-6 rounded-xl font-extrabold text-xs uppercase tracking-wider bg-emerald-600 hover:bg-emerald-700 text-white shadow-md hover:shadow-lg transition-all flex items-center justify-center gap-2.5 cursor-pointer"
+              className="w-full py-3.5 px-6 font-bold text-xs uppercase tracking-wider bg-[#18181B] hover:bg-black text-white transition-colors flex items-center justify-center gap-2 cursor-pointer"
             >
-              <MessageCircle className="w-5 h-5 fill-white" />
-              <span>ORDER VIA WHATSAPP (Direct to Kigali Store)</span>
+              <MessageCircle className="w-3.5 h-3.5" />
+              <span>Order via WhatsApp ({BUSINESS_CONFIG.phoneDisplay})</span>
             </a>
           </div>
 
-          {/* Clear Delivery Callout Box */}
-          <div className="p-4 bg-purple-50 rounded-2xl border border-purple-200 space-y-2">
-            <div className="flex items-center gap-2 text-purple-900 font-bold text-xs">
-              <Truck className="w-4 h-4 text-purple-700" />
-              <span>FREE DELIVERY IN KIGALI</span>
-            </div>
-            <p className="text-xs text-purple-950 leading-relaxed">
-              Order now and receive your luggage at your home or workplace in Kigali. Pay upon inspection with cash or MTN/Airtel Mobile Money.
+          {/* Quick Notice */}
+          <div className="p-4 bg-[#F4F4F5] border border-[#E4E4E7] text-xs text-[#52525B] space-y-1">
+            <span className="font-semibold text-[#18181B] block uppercase tracking-wide text-[11px]">
+              Kigali Delivery Guarantee
+            </span>
+            <p>
+              Free doorstep delivery within Kigali city limits. Inspect on delivery and pay via Cash or Mobile Money.
             </p>
           </div>
         </div>
       </div>
 
-      {/* DELIVERY EXPLANATION SECTION */}
-      <section id="delivery-process-section" className="bg-white rounded-3xl p-8 sm:p-10 border border-stone-200 shadow-xs space-y-6">
-        <div className="max-w-xl">
-          <span className="text-xs font-bold text-purple-700 uppercase tracking-wider">
-            Seamless Local Service
+      {/* DELIVERY EXPLANATION */}
+      <section id="delivery-process-section" className="bg-white p-8 border border-[#E4E4E7] space-y-6">
+        <div>
+          <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-[#71717A] block">
+            Service
           </span>
-          <h3 className="text-xl sm:text-2xl font-extrabold text-slate-900 tracking-tight">
-            FREE DELIVERY IN KIGALI — How It Works
+          <h3 className="text-lg font-bold text-[#18181B] uppercase tracking-wide">
+            Delivery & Payment
           </h3>
-          <p className="text-xs sm:text-sm text-slate-500 mt-1">
-            We make buying luggage in Kigali as convenient and worry-free as possible.
-          </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-6 pt-2">
-          <div className="bg-stone-50 p-5 rounded-2xl border border-stone-200 space-y-2">
-            <span className="w-7 h-7 rounded-full bg-slate-900 text-white text-xs font-bold flex items-center justify-center">
-              1
-            </span>
-            <h4 className="font-bold text-slate-900 text-sm">Select & Order</h4>
-            <p className="text-xs text-slate-500 leading-relaxed">
-              Choose your preferred suitcase model, size, and color on this website or tap Order via WhatsApp.
-            </p>
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-6 text-xs">
+          <div className="space-y-1">
+            <span className="font-mono text-[#71717A]">01</span>
+            <h4 className="font-bold text-[#18181B] uppercase">Select Model</h4>
+            <p className="text-[#71717A]">Choose color and size, then order online or via WhatsApp.</p>
           </div>
-
-          <div className="bg-stone-50 p-5 rounded-2xl border border-stone-200 space-y-2">
-            <span className="w-7 h-7 rounded-full bg-slate-900 text-white text-xs font-bold flex items-center justify-center">
-              2
-            </span>
-            <h4 className="font-bold text-slate-900 text-sm">Instant Confirmation</h4>
-            <p className="text-xs text-slate-500 leading-relaxed">
-              Our Downtown Kigali team confirms your order and delivery location (Gasabo, Kicukiro, or Nyarugenge).
-            </p>
+          <div className="space-y-1">
+            <span className="font-mono text-[#71717A]">02</span>
+            <h4 className="font-bold text-[#18181B] uppercase">Confirmation</h4>
+            <p className="text-[#71717A]">Our Downtown Kigali store confirms delivery address immediately.</p>
           </div>
-
-          <div className="bg-stone-50 p-5 rounded-2xl border border-stone-200 space-y-2">
-            <span className="w-7 h-7 rounded-full bg-slate-900 text-white text-xs font-bold flex items-center justify-center">
-              3
-            </span>
-            <h4 className="font-bold text-slate-900 text-sm">Doorstep Delivery</h4>
-            <p className="text-xs text-slate-500 leading-relaxed">
-              Our driver delivers the luggage safely to your address at no additional delivery cost.
-            </p>
+          <div className="space-y-1">
+            <span className="font-mono text-[#71717A]">03</span>
+            <h4 className="font-bold text-[#18181B] uppercase">Doorstep Dispatch</h4>
+            <p className="text-[#71717A]">Delivered directly to your home or office at zero extra fee.</p>
           </div>
-
-          <div className="bg-stone-50 p-5 rounded-2xl border border-stone-200 space-y-2">
-            <span className="w-7 h-7 rounded-full bg-slate-900 text-white text-xs font-bold flex items-center justify-center">
-              4
-            </span>
-            <h4 className="font-bold text-slate-900 text-sm">Inspect & Pay</h4>
-            <p className="text-xs text-slate-500 leading-relaxed">
-              Verify the quality, zippers, wheels, and condition on delivery, then pay with Cash or Mobile Money.
-            </p>
+          <div className="space-y-1">
+            <span className="font-mono text-[#71717A]">04</span>
+            <h4 className="font-bold text-[#18181B] uppercase">Pay on Delivery</h4>
+            <p className="text-[#71717A]">Inspect condition and pay with Cash or MTN Mobile Money.</p>
           </div>
         </div>
       </section>
 
-      {/* SPECIFICATIONS TABLE */}
+      {/* SPECIFICATIONS */}
       {selectedProduct.specifications && selectedProduct.specifications.length > 0 && (
-        <section id="product-specifications-section" className="bg-white rounded-3xl p-8 sm:p-10 border border-stone-200 shadow-xs space-y-6">
-          <div className="max-w-xl">
-            <span className="text-xs font-bold text-purple-700 uppercase tracking-wider">
-              Technical Details
+        <section id="product-specifications-section" className="bg-white p-8 border border-[#E4E4E7] space-y-4">
+          <div>
+            <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-[#71717A] block">
+              Specifications
             </span>
-            <h3 className="text-xl sm:text-2xl font-extrabold text-slate-900 tracking-tight">
-              Product Specifications
+            <h3 className="text-lg font-bold text-[#18181B] uppercase tracking-wide">
+              Technical Details
             </h3>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs">
             {selectedProduct.specifications.map((spec, idx) => (
               <div
                 key={idx}
-                className="flex items-center justify-between p-3.5 bg-stone-50 rounded-xl border border-stone-200 text-xs"
+                className="flex items-center justify-between py-2 border-b border-[#E4E4E7]"
               >
-                <span className="font-medium text-slate-500">{spec.label}</span>
-                <span className="font-bold text-slate-900 text-right">{spec.value}</span>
+                <span className="text-[#71717A]">{spec.label}</span>
+                <span className="font-medium text-[#18181B] text-right">{spec.value}</span>
               </div>
             ))}
           </div>
@@ -441,16 +375,16 @@ export const ProductDetailView: React.FC = () => {
 
       {/* RELATED PRODUCTS */}
       {relatedProducts.length > 0 && (
-        <section className="space-y-6 pt-6">
-          <div className="flex items-center justify-between">
-            <h3 className="text-xl font-extrabold text-slate-900 tracking-tight">
-              You Might Also Like
+        <section className="space-y-6 pt-4">
+          <div className="flex items-center justify-between pb-2 border-b border-[#E4E4E7]">
+            <h3 className="text-base font-bold text-[#18181B] uppercase tracking-wide">
+              Related Luggage
             </h3>
             <button
               onClick={() => navigateTo('shop')}
-              className="text-xs font-bold text-purple-700 hover:text-purple-900"
+              className="text-xs text-[#71717A] hover:text-[#18181B] uppercase tracking-wider"
             >
-              View All
+              View Catalog
             </button>
           </div>
 
