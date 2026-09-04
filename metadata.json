@@ -1,0 +1,6 @@
+{
+  "name": "Kigali Luggage Solution",
+  "description": "Quality luggage, modern suitcases, travel bags, and accessories in Kigali, Rwanda with free delivery within Kigali and direct WhatsApp ordering.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
