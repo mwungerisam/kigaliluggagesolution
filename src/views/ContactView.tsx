@@ -57,7 +57,7 @@ Message: ${message}`;
                   Location
                 </span>
                 <p className="font-semibold text-[#18181B]">{BUSINESS_CONFIG.location}</p>
-                <p className="text-[#71717A] text-[11px] mt-0.5">Kigali City Center / Downtown</p>
+                <p className="text-[#71717A] text-[11px] mt-0.5">Kigali City Center, Rwanda</p>
               </div>
 
               <div className="pt-3 border-t border-[#F4F4F5]">
@@ -204,6 +204,42 @@ Message: ${message}`;
               </a>
             </div>
           </div>
+        </div>
+      </div>
+
+      {/* Google Maps Location Section */}
+      <div className="bg-white p-6 sm:p-8 border border-[#E4E4E7] space-y-4">
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-3 border-b border-[#E4E4E7]">
+          <div>
+            <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-[#990000] block">
+              Store Location
+            </span>
+            <h2 className="text-xl font-bold text-[#18181B] uppercase tracking-tight">
+              Google Maps Location
+            </h2>
+            <p className="text-xs text-[#71717A] mt-0.5">
+              Find Kigali Luggage Solution on Google Maps or get instant driving directions.
+            </p>
+          </div>
+          <a
+            href="https://maps.google.com/?q=Kigali+Luggage+Solution,Kigali,Rwanda"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="px-5 py-2.5 bg-[#990000] hover:bg-[#800000] text-white text-xs font-bold uppercase tracking-wider transition-colors inline-flex items-center gap-2 shrink-0 cursor-pointer self-start sm:self-center"
+          >
+            <ExternalLink className="w-3.5 h-3.5" />
+            <span>Open in Google Maps</span>
+          </a>
+        </div>
+
+        <div className="w-full h-80 sm:h-96 border border-[#E4E4E7] overflow-hidden bg-zinc-100">
+          <iframe
+            title="Kigali Luggage Solution Google Location Map"
+            src="https://maps.google.com/maps?q=-1.9536,30.0592(Kigali+Luggage+Solution)&t=&z=15&ie=UTF8&iwloc=&output=embed"
+            className="w-full h-full border-0"
+            loading="lazy"
+            allowFullScreen
+          />
         </div>
       </div>
     </div>

@@ -24,13 +24,13 @@ export const HomeView: React.FC = () => {
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
             {/* Left: Typography & Actions */}
             <div className="lg:col-span-6 space-y-6">
-              <div className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.2em] text-[#71717A]">
-                <span>Downtown Kigali</span>
+              <div className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-[0.2em] text-[#990000]">
+                <span>Kigali, Rwanda</span>
                 <span>•</span>
                 <span>Complimentary Delivery</span>
               </div>
 
-              <h1 className="text-3xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-[#18181B] leading-[1.08] uppercase">
+              <h1 className="text-3xl sm:text-5xl lg:text-6xl font-black tracking-tight text-[#18181B] leading-[1.08] uppercase font-heading">
                 Engineered for every journey.
               </h1>
 
@@ -42,7 +42,7 @@ export const HomeView: React.FC = () => {
                 <button
                   id="hero-shop-luggage-btn"
                   onClick={() => navigateTo('shop')}
-                  className="px-7 py-3.5 bg-[#18181B] hover:bg-black text-white text-xs font-bold uppercase tracking-wider transition-colors flex items-center justify-center gap-2 cursor-pointer"
+                  className="px-7 py-3.5 bg-[#990000] hover:bg-[#800000] text-white text-xs font-bold uppercase tracking-wider transition-colors flex items-center justify-center gap-2 cursor-pointer shadow-sm"
                 >
                   <span>Explore Catalog</span>
                   <ArrowRight className="w-3.5 h-3.5" />
@@ -62,11 +62,11 @@ export const HomeView: React.FC = () => {
               {/* Quiet Micro Details */}
               <div className="pt-6 border-t border-[#E4E4E7] grid grid-cols-3 gap-4 text-[11px] text-[#71717A]">
                 <div>
-                  <span className="block font-bold text-[#18181B]">0 RWF</span>
+                  <span className="block font-extrabold text-[#990000]">0 RWF</span>
                   <span>Kigali Delivery</span>
                 </div>
                 <div>
-                  <span className="block font-bold text-[#18181B]">Downtown</span>
+                  <span className="block font-bold text-[#18181B]">Physical</span>
                   <span>Store Showroom</span>
                 </div>
                 <div>
@@ -256,10 +256,10 @@ export const HomeView: React.FC = () => {
               Showroom & Service
             </span>
             <h2 className="text-2xl sm:text-3xl font-bold tracking-tight text-white uppercase">
-              Visit Downtown Showroom or Order Direct
+              Visit Kigali Showroom or Order Direct
             </h2>
             <p className="text-xs sm:text-sm text-[#A1A1AA] leading-relaxed max-w-xl">
-              Inspect any suitcase model in person at our Downtown Kigali store, or request instant home/office delivery with one tap.
+              Inspect any suitcase model in person at our Kigali store, or request instant home/office delivery with one tap.
             </p>
             <div className="text-xs text-[#D4D4D8] space-y-1 pt-2">
               <p>• Location: {BUSINESS_CONFIG.location}</p>

@@ -338,7 +338,7 @@ export const ProductDetailView: React.FC = () => {
           <div className="space-y-1">
             <span className="font-mono text-[#71717A]">02</span>
             <h4 className="font-bold text-[#18181B] uppercase">Confirmation</h4>
-            <p className="text-[#71717A]">Our Downtown Kigali store confirms delivery address immediately.</p>
+            <p className="text-[#71717A]">Our Kigali store confirms delivery address immediately.</p>
           </div>
           <div className="space-y-1">
             <span className="font-mono text-[#71717A]">03</span>

@@ -96,7 +96,7 @@ const INSTAGRAM_POSTS: InstagramPost[] = [
   {
     id: 'post-dbgkn',
     image: 'https://images.unsplash.com/photo-1553062407-98eeb64c6a62?auto=format&fit=crop&q=80&w=800',
-    caption: 'Visit our physical showroom in Downtown Kigali today to inspect all sizes and colors in person!',
+    caption: 'Visit our physical showroom in Kigali today to inspect all sizes and colors in person!',
     likes: 350,
     comments: 52,
     tag: '#DbGkNZVoD9e',
@@ -111,11 +111,11 @@ export const InstagramSection: React.FC = () => {
         {/* Section Header */}
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-10 gap-4">
           <div>
-            <div className="flex items-center gap-2 text-purple-700 font-extrabold text-xs tracking-wider uppercase mb-2">
+            <div className="flex items-center gap-2 text-[#990000] font-extrabold text-xs tracking-wider uppercase mb-2">
               <Instagram className="w-4 h-4" />
               <span>As Seen on Instagram & Reels</span>
             </div>
-            <h2 className="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight">
+            <h2 className="text-2xl sm:text-3xl font-black text-slate-900 tracking-tight font-heading">
               All Instagram Posts, Reels & Customer Deliveries
             </h2>
             <p className="mt-1 text-sm text-slate-600 max-w-xl">
@@ -128,7 +128,7 @@ export const InstagramSection: React.FC = () => {
             href={BUSINESS_CONFIG.instagramUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 px-5 py-2.5 bg-gradient-to-r from-purple-700 via-pink-600 to-amber-500 text-white rounded-xl font-bold text-xs shadow-md hover:shadow-lg transition-all hover:scale-[1.02] active:scale-[0.98] shrink-0"
+            className="inline-flex items-center gap-2 px-5 py-2.5 bg-[#990000] hover:bg-[#800000] text-white rounded-xl font-bold text-xs shadow-md hover:shadow-lg transition-all hover:scale-[1.02] active:scale-[0.98] shrink-0"
           >
             <Instagram className="w-4 h-4" />
             <span>Follow {BUSINESS_CONFIG.instagramHandle}</span>
@@ -177,7 +177,7 @@ export const InstagramSection: React.FC = () => {
               {/* Hover Darkened Overlay */}
               <div className="absolute inset-0 bg-slate-950/75 opacity-0 group-hover:opacity-100 transition-opacity p-4 flex flex-col justify-between text-white">
                 <div className="flex items-center justify-between">
-                  <span className="text-[10px] font-bold tracking-wider text-purple-300">
+                  <span className="text-[10px] font-bold tracking-wider text-red-300">
                     {post.tag}
                   </span>
                   <Instagram className="w-4 h-4 text-white" />
@@ -212,7 +212,7 @@ export const InstagramSection: React.FC = () => {
             href={BUSINESS_CONFIG.instagramUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="text-purple-700 hover:text-purple-900 font-bold underline"
+            className="text-[#990000] hover:text-[#800000] font-bold underline"
           >
             View Live Profile
           </a>

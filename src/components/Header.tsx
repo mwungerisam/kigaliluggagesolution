@@ -106,8 +106,8 @@ export const Header: React.FC = () => {
                 onClick={() => handleNavClick(link.page)}
                 className={`text-xs font-semibold uppercase tracking-wider transition-colors py-1 cursor-pointer ${
                   currentPage === link.page
-                    ? 'text-[#18181B] border-b border-[#18181B]'
-                    : 'text-[#71717A] hover:text-[#18181B]'
+                    ? 'text-[#990000] border-b-2 border-[#990000]'
+                    : 'text-[#71717A] hover:text-[#990000]'
                 }`}
               >
                 {link.label}
@@ -176,7 +176,7 @@ export const Header: React.FC = () => {
               {cartCount > 0 && (
                 <span
                   id="cart-badge-count"
-                  className="absolute -top-1 -right-1 bg-[#18181B] text-white text-[10px] font-bold w-4 h-4 rounded-full flex items-center justify-center"
+                  className="absolute -top-1 -right-1 bg-[#990000] text-white text-[10px] font-bold w-4 h-4 rounded-full flex items-center justify-center"
                 >
                   {cartCount}
                 </span>

@@ -5,7 +5,7 @@ export const BUSINESS_CONFIG = {
   sellingProposition: 'QUALITY LUGGAGES',
   deliveryPromise: 'FREE DELIVERY IN KIGALI',
   deliveryDescription: 'Order online and receive your luggage conveniently at your location anywhere across Kigali at no extra cost.',
-  location: 'Kigali, Rwanda — Downtown',
+  location: 'Kigali, Rwanda',
   phoneDisplay: '+250 781 157 188',
   phoneRaw: '+250781157188',
   whatsappNumber: '250781157188',
@@ -45,7 +45,7 @@ export const KIGALI_DISTRICTS: Record<string, string[]> = {
     'Nyarugunga',
   ],
   Nyarugenge: [
-    'Downtown / City Center',
+    'City Center / Nyarugenge',
     'Nyamirambo',
     'Muhima',
     'Kiyovu',

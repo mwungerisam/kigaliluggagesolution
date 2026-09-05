@@ -11,12 +11,12 @@ export const AnnouncementBar: React.FC = () => {
           </span>
           <span className="text-[#71717A] hidden md:inline">•</span>
           <span className="text-[#A1A1AA] hidden md:inline">
-            Complimentary doorstep delivery in Kigali • Downtown Showroom
+            Complimentary doorstep delivery in Kigali • Physical Showroom
           </span>
         </div>
 
         <div className="hidden sm:flex items-center gap-4 text-[#A1A1AA]">
-          <span className="text-[11px]">Downtown Kigali</span>
+          <span className="text-[11px]">Kigali, Rwanda</span>
           <span className="text-[#3F3F46]">|</span>
           <a
             href={`https://wa.me/${BUSINESS_CONFIG.whatsappNumber}?text=${encodeURIComponent(

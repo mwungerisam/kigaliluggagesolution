@@ -1,1 +1,27 @@
 @import "tailwindcss";
+
+@layer base {
+  body {
+    font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+  }
+  h1, h2, h3, h4, .font-heading {
+    font-family: 'Montserrat', 'Plus Jakarta Sans', sans-serif;
+  }
+}
+
+.font-brand {
+  font-family: 'Montserrat', sans-serif;
+}
+
+.text-brand-red {
+  color: #990000;
+}
+
+.bg-brand-red {
+  background-color: #990000;
+}
+
+.border-brand-red {
+  border-color: #990000;
+}
+

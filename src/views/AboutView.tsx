@@ -15,7 +15,7 @@ export const AboutView: React.FC = () => {
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
         <div className="lg:col-span-7 space-y-6">
           <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-[#71717A] block">
-            Downtown Kigali, Rwanda
+            Kigali, Rwanda
           </span>
 
           <h1 className="text-3xl sm:text-4xl font-bold text-[#18181B] tracking-tight uppercase leading-tight">
@@ -27,7 +27,7 @@ export const AboutView: React.FC = () => {
           </p>
 
           <p className="text-xs sm:text-sm text-[#71717A] leading-relaxed">
-            From our retail presence in Downtown Kigali and our active customer network, our focus is providing dependable, durable travel solutions in Rwanda. Every suitcase in our catalog is engineered to withstand transit while maintaining effortless maneuverability—accompanied by complimentary delivery across Kigali.
+            From our physical showroom in Kigali and our active customer network, our focus is providing dependable, durable travel solutions in Rwanda. Every suitcase in our catalog is engineered to withstand transit while maintaining effortless maneuverability—accompanied by complimentary delivery across Kigali.
           </p>
 
           <div className="pt-2 flex flex-wrap items-center gap-3">
@@ -93,45 +93,65 @@ export const AboutView: React.FC = () => {
         </div>
       </div>
 
-      {/* Store Location & Visiting Info */}
-      <div className="bg-white p-8 sm:p-10 border border-[#E4E4E7] space-y-6">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
-          <div className="space-y-3">
-            <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-[#71717A] block">
-              Storefront
+      {/* Store Location & Google Map Info */}
+      <div className="bg-white p-6 sm:p-10 border border-[#E4E4E7] space-y-6">
+        <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 pb-4 border-b border-[#E4E4E7]">
+          <div>
+            <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-[#990000] block">
+              Google Maps Location
             </span>
             <h2 className="text-xl font-bold text-[#18181B] uppercase tracking-tight">
-              Downtown Kigali Showroom
+              Kigali Showroom & Store
             </h2>
-            <p className="text-xs text-[#71717A] leading-relaxed">
-              Visit our Downtown Kigali store to inspect materials, handle sizing, and test wheels in person during regular business hours.
+            <p className="text-xs text-[#71717A] mt-1">
+              Visit our Kigali store to inspect materials, handle sizing, and test wheels in person during regular business hours.
             </p>
+          </div>
+          <a
+            href="https://maps.google.com/?q=Kigali+Luggage+Solution,Kigali,Rwanda"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="px-5 py-2.5 bg-[#990000] hover:bg-[#800000] text-white text-xs font-bold uppercase tracking-wider transition-colors inline-flex items-center gap-2 shrink-0 cursor-pointer"
+          >
+            <span>Open in Google Maps</span>
+          </a>
+        </div>
 
-            <div className="space-y-1.5 text-xs text-[#52525B] pt-2">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+          <div className="lg:col-span-8 h-80 sm:h-96 w-full border border-[#E4E4E7] overflow-hidden bg-zinc-100">
+            <iframe
+              title="Kigali Luggage Solution Google Location Map"
+              src="https://maps.google.com/maps?q=-1.9536,30.0592(Kigali+Luggage+Solution)&t=&z=15&ie=UTF8&iwloc=&output=embed"
+              className="w-full h-full border-0"
+              loading="lazy"
+              allowFullScreen
+            />
+          </div>
+
+          <div className="lg:col-span-4 bg-[#F4F4F5] p-6 border border-[#E4E4E7] space-y-4 text-xs">
+            <h3 className="font-bold text-xs text-[#18181B] uppercase tracking-wider border-b border-[#E4E4E7] pb-2">
+              Store Information
+            </h3>
+            <div className="space-y-2 text-[#52525B]">
               <p>• <strong>Location:</strong> {BUSINESS_CONFIG.location}</p>
               <p>• <strong>Telephone:</strong> {BUSINESS_CONFIG.phoneDisplay}</p>
               <p>• <strong>Hours:</strong> {BUSINESS_CONFIG.openingHours}</p>
+              <p>• <strong>Delivery:</strong> Free doorstep delivery anywhere in Kigali</p>
             </div>
-          </div>
 
-          <div className="bg-[#F4F4F5] p-6 border border-[#E4E4E7] space-y-3">
-            <h3 className="font-bold text-xs text-[#18181B] uppercase tracking-wider">
-              Direct Remote Orders
-            </h3>
-            <p className="text-xs text-[#71717A] leading-relaxed">
-              Need luggage delivered immediately? Message our team on WhatsApp for real-time stock photos and same-day dispatch.
-            </p>
-            <a
-              href={`https://wa.me/${BUSINESS_CONFIG.whatsappNumber}?text=${encodeURIComponent(
-                'Hello Kigali Luggage Solution, I would like to order a suitcase for delivery in Kigali.'
-              )}`}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 px-4 py-2.5 bg-[#18181B] hover:bg-black text-white font-bold text-xs uppercase tracking-wider transition-colors cursor-pointer"
-            >
-              <MessageCircle className="w-3.5 h-3.5" />
-              <span>Chat on WhatsApp</span>
-            </a>
+            <div className="pt-2">
+              <a
+                href={`https://wa.me/${BUSINESS_CONFIG.whatsappNumber}?text=${encodeURIComponent(
+                  'Hello Kigali Luggage Solution, I would like to order a suitcase for delivery in Kigali.'
+                )}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-full justify-center inline-flex items-center gap-2 px-4 py-3 bg-[#18181B] hover:bg-black text-white font-bold text-xs uppercase tracking-wider transition-colors cursor-pointer"
+              >
+                <MessageCircle className="w-3.5 h-3.5" />
+                <span>Chat on WhatsApp</span>
+              </a>
+            </div>
           </div>
         </div>
       </div>

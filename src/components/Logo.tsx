@@ -9,32 +9,34 @@ interface LogoProps {
 export const Logo: React.FC<LogoProps> = ({ className = '', size = 'md', variant = 'light' }) => {
   const isSm = size === 'sm';
   const isLg = size === 'lg';
-  const subtextColor = variant === 'dark' ? '#ffffff' : '#1a1a1a';
+  const textColor = variant === 'dark' ? '#ffffff' : '#990000';
 
   return (
-    <div className={`flex flex-col items-start select-none ${className}`}>
+    <div className={`flex flex-col items-start select-none font-brand ${className}`}>
       <span 
-        className="font-black uppercase tracking-tight leading-none text-[#990000]"
+        className="font-black uppercase tracking-tight leading-none"
         style={{
-          fontFamily: 'system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif',
-          fontSize: isSm ? '1rem' : isLg ? '1.85rem' : '1.3rem',
+          fontFamily: "'Montserrat', 'Plus Jakarta Sans', sans-serif",
+          fontSize: isSm ? '1.1rem' : isLg ? '2.1rem' : '1.45rem',
           fontWeight: 900,
-          letterSpacing: '-0.03em',
+          letterSpacing: '-0.02em',
+          color: textColor,
         }}
       >
         KIGALI
       </span>
       <span 
-        className="uppercase font-bold leading-none mt-1"
+        className="leading-none mt-0.5 tracking-wider"
         style={{
-          fontFamily: 'system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif',
-          fontSize: isSm ? '0.55rem' : isLg ? '0.85rem' : '0.68rem',
-          letterSpacing: '0.24em',
-          color: subtextColor,
+          fontFamily: "'Montserrat', 'Plus Jakarta Sans', sans-serif",
+          fontSize: isSm ? '0.52rem' : isLg ? '0.92rem' : '0.68rem',
+          color: textColor,
         }}
       >
-        <span className="lowercase font-normal">luggage</span> SOLUTION
+        <span className="lowercase font-normal">luggage</span>{' '}
+        <span className="uppercase font-bold tracking-widest">SOLUTION</span>
       </span>
     </div>
   );
 };
+

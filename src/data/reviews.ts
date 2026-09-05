@@ -25,9 +25,9 @@ export const CUSTOMER_REVIEWS: CustomerReview[] = [
   {
     id: 'rev-03',
     author: 'David K.',
-    location: 'Kigali — Downtown / Nyarugenge',
+    location: 'Kigali — City Center / Nyarugenge',
     rating: 5,
-    comment: 'Visited their store in Downtown Kigali first to check the build quality. The staff was super helpful. Ended up ordering another 28-inch checked suitcase for my son studying abroad. Strong zipper and TSA lock.',
+    comment: 'Visited their store in Kigali first to check the build quality. The staff was super helpful. Ended up ordering another 28-inch checked suitcase for my son studying abroad. Strong zipper and TSA lock.',
     productName: 'Extra-Capacity Large Checked Suitcase (28")',
     date: 'February 2026',
     verified: true,

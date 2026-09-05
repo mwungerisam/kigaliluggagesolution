@@ -56,7 +56,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
 
         {/* Minimalist category indicator */}
         {product.category === 'Luggage Sets' && (
-          <span className="absolute top-3 left-3 bg-[#18181B] text-white text-[10px] font-semibold uppercase tracking-wider px-2 py-0.5">
+          <span className="absolute top-3 left-3 bg-[#990000] text-white text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 shadow-sm">
             3-Piece Set
           </span>
         )}

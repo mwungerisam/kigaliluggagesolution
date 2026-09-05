@@ -1,4 +1,9 @@
 import { Product, ProductCategory } from '../types';
+import heroDisplay from '../assets/images/hero_luggage_display_1788522444129.jpg';
+import luggageSetTrio from '../assets/images/luggage_set_trio_1788522457562.jpg';
+import carryOnSpinner from '../assets/images/carry_on_spinner_1788522512958.jpg';
+import travelDuffle from '../assets/images/travel_duffle_bag_1788522470845.jpg';
+import travelPillow from '../assets/images/travel_pillow_1788522526560.jpg';
 
 export interface CategoryCardData {
   id: string;
@@ -8,11 +13,14 @@ export interface CategoryCardData {
   itemCount: number;
 }
 
-const IG1 = 'https://images.unsplash.com/photo-1581553680321-4fffae59fccd?auto=format&fit=crop&q=80&w=800';
-const IG2 = 'https://images.unsplash.com/photo-1565026057447-bc90a3dcae87?auto=format&fit=crop&q=80&w=800';
-const IG3 = 'https://images.unsplash.com/photo-1553062407-98eeb64c6a62?auto=format&fit=crop&q=80&w=800';
-const IG4 = 'https://images.unsplash.com/photo-1533514652136-231a473f606e?auto=format&fit=crop&q=80&w=800';
-const IG5 = 'https://images.unsplash.com/photo-1512753360435-364c74f4b232?auto=format&fit=crop&q=80&w=800';
+// Distinct high-resolution luggage images
+const IMG_ALUMINUM_GREEN = 'https://images.unsplash.com/photo-1581553680321-4fffae59fccd?auto=format&fit=crop&q=80&w=800';
+const IMG_ALUMINUM_SILVER = 'https://images.unsplash.com/photo-1565026057447-bc90a3dcae87?auto=format&fit=crop&q=80&w=800';
+const IMG_NAVY_LUGGAGE_SET = 'https://images.unsplash.com/photo-1553062407-98eeb64c6a62?auto=format&fit=crop&q=80&w=800';
+const IMG_BLACK_CARBON = 'https://images.unsplash.com/photo-1533514652136-231a473f606e?auto=format&fit=crop&q=80&w=800';
+const IMG_ROSE_GOLD = 'https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?auto=format&fit=crop&q=80&w=800';
+const IMG_FABRIC_SOFTSIDE = 'https://images.unsplash.com/photo-1512753360435-364c74f4b232?auto=format&fit=crop&q=80&w=800';
+const IMG_GEMULIN_LUXURY = 'https://images.unsplash.com/photo-1506152983158-b4a74a01c721?auto=format&fit=crop&q=80&w=800';
 
 export const PRODUCTS: Product[] = [
   {
@@ -25,7 +33,7 @@ export const PRODUCTS: Product[] = [
     originalPrice: 380000,
     currency: 'RWF',
     category: 'Luggage Sets',
-    images: [IG1, IG2, IG3],
+    images: [heroDisplay, IMG_ALUMINUM_SILVER, IMG_ALUMINUM_GREEN],
     colors: [
       { name: 'Metallic Silver', hex: '#94a3b8', imageIndex: 0 },
       { name: 'Titanium Grey', hex: '#374151', imageIndex: 1 },
@@ -57,7 +65,7 @@ export const PRODUCTS: Product[] = [
     originalPrice: 180000,
     currency: 'RWF',
     category: 'Large Suitcases',
-    images: [IG1, IG2],
+    images: [IMG_ALUMINUM_SILVER, heroDisplay],
     colors: [
       { name: 'Metallic Silver', hex: '#94a3b8', imageIndex: 0 },
       { name: 'Titanium Grey', hex: '#374151', imageIndex: 1 },
@@ -86,7 +94,7 @@ export const PRODUCTS: Product[] = [
     originalPrice: 155000,
     currency: 'RWF',
     category: 'Suitcases',
-    images: [IG2, IG1],
+    images: [IMG_ALUMINUM_GREEN, IMG_ALUMINUM_SILVER],
     colors: [
       { name: 'Metallic Silver', hex: '#94a3b8', imageIndex: 0 },
     ],
@@ -113,7 +121,7 @@ export const PRODUCTS: Product[] = [
     originalPrice: 135000,
     currency: 'RWF',
     category: 'Carry-On Luggage',
-    images: [IG3, IG1],
+    images: [carryOnSpinner, IMG_ALUMINUM_SILVER],
     colors: [
       { name: 'Metallic Silver', hex: '#94a3b8', imageIndex: 0 },
     ],
@@ -142,7 +150,7 @@ export const PRODUCTS: Product[] = [
     originalPrice: 300000,
     currency: 'RWF',
     category: 'Luggage Sets',
-    images: [IG2, IG3, IG1],
+    images: [luggageSetTrio, IMG_ROSE_GOLD, IMG_BLACK_CARBON],
     colors: [
       { name: 'Rose Gold', hex: '#e0a899', imageIndex: 0 },
       { name: 'Black Carbon', hex: '#18181b', imageIndex: 1 },
@@ -172,7 +180,7 @@ export const PRODUCTS: Product[] = [
     originalPrice: 135000,
     currency: 'RWF',
     category: 'Large Suitcases',
-    images: [IG2, IG1],
+    images: [IMG_BLACK_CARBON, luggageSetTrio],
     colors: [{ name: 'Black', hex: '#18181b', imageIndex: 0 }],
     sizes: ['Large'],
     specifications: [{ label: 'Tariff Price', value: '120k RWF' }],
@@ -194,7 +202,7 @@ export const PRODUCTS: Product[] = [
     originalPrice: 95000,
     currency: 'RWF',
     category: 'Suitcases',
-    images: [IG2, IG3],
+    images: [IMG_ROSE_GOLD, IMG_BLACK_CARBON],
     colors: [{ name: 'Rose Gold', hex: '#e0a899', imageIndex: 0 }],
     sizes: ['Medium'],
     specifications: [{ label: 'Tariff Price', value: '85k RWF' }],
@@ -216,7 +224,7 @@ export const PRODUCTS: Product[] = [
     originalPrice: 80000,
     currency: 'RWF',
     category: 'Carry-On Luggage',
-    images: [IG2, IG1],
+    images: [carryOnSpinner, IMG_ROSE_GOLD],
     colors: [{ name: 'Silver', hex: '#cbd5e1', imageIndex: 0 }],
     sizes: ['Small (Cabin)'],
     specifications: [{ label: 'Tariff Price', value: '70k RWF' }],
@@ -240,7 +248,7 @@ export const PRODUCTS: Product[] = [
     originalPrice: 270000,
     currency: 'RWF',
     category: 'Luggage Sets',
-    images: [IG3, IG4, IG1],
+    images: [IMG_NAVY_LUGGAGE_SET, IMG_BLACK_CARBON, IMG_FABRIC_SOFTSIDE],
     colors: [
       { name: 'Navy Blue', hex: '#1e3a8a', imageIndex: 0 },
       { name: 'Emerald Green', hex: '#065f46', imageIndex: 1 },
@@ -270,7 +278,7 @@ export const PRODUCTS: Product[] = [
     originalPrice: 125000,
     currency: 'RWF',
     category: 'Large Suitcases',
-    images: [IG3, IG1],
+    images: [IMG_BLACK_CARBON, IMG_NAVY_LUGGAGE_SET],
     colors: [{ name: 'Blue', hex: '#1e3a8a', imageIndex: 0 }],
     sizes: ['Large'],
     specifications: [{ label: 'Tariff Price', value: '110k RWF' }],
@@ -292,7 +300,7 @@ export const PRODUCTS: Product[] = [
     originalPrice: 95000,
     currency: 'RWF',
     category: 'Suitcases',
-    images: [IG3, IG2],
+    images: [IMG_NAVY_LUGGAGE_SET, IMG_BLACK_CARBON],
     colors: [{ name: 'White', hex: '#f8fafc', imageIndex: 0 }],
     sizes: ['Medium'],
     specifications: [{ label: 'Tariff Price', value: '85k RWF' }],
@@ -314,7 +322,7 @@ export const PRODUCTS: Product[] = [
     originalPrice: 85000,
     currency: 'RWF',
     category: 'Carry-On Luggage',
-    images: [IG3, IG1],
+    images: [carryOnSpinner, IMG_NAVY_LUGGAGE_SET],
     colors: [{ name: 'Green', hex: '#065f46', imageIndex: 0 }],
     sizes: ['Small (Cabin)'],
     specifications: [{ label: 'Tariff Price', value: '75k RWF' }],
@@ -338,7 +346,7 @@ export const PRODUCTS: Product[] = [
     originalPrice: 230000,
     currency: 'RWF',
     category: 'Luggage Sets',
-    images: [IG4, IG1, IG5],
+    images: [IMG_FABRIC_SOFTSIDE, travelDuffle, IMG_NAVY_LUGGAGE_SET],
     colors: [
       { name: 'Charcoal Black', hex: '#18181b', imageIndex: 0 },
       { name: 'Navy Blue', hex: '#1e3a8a', imageIndex: 1 },
@@ -367,7 +375,7 @@ export const PRODUCTS: Product[] = [
     originalPrice: 110000,
     currency: 'RWF',
     category: 'Large Suitcases',
-    images: [IG4, IG1],
+    images: [IMG_FABRIC_SOFTSIDE, travelDuffle],
     colors: [{ name: 'Black', hex: '#18181b', imageIndex: 0 }],
     sizes: ['Large'],
     specifications: [{ label: 'Tariff Price', value: '95k RWF' }],
@@ -389,7 +397,7 @@ export const PRODUCTS: Product[] = [
     originalPrice: 85000,
     currency: 'RWF',
     category: 'Suitcases',
-    images: [IG4, IG2],
+    images: [travelDuffle, IMG_FABRIC_SOFTSIDE],
     colors: [{ name: 'Navy', hex: '#1e3a8a', imageIndex: 0 }],
     sizes: ['Medium'],
     specifications: [{ label: 'Tariff Price', value: '75k RWF' }],
@@ -411,7 +419,7 @@ export const PRODUCTS: Product[] = [
     originalPrice: 70000,
     currency: 'RWF',
     category: 'Carry-On Luggage',
-    images: [IG4, IG3],
+    images: [carryOnSpinner, travelDuffle],
     colors: [{ name: 'Black', hex: '#18181b', imageIndex: 0 }],
     sizes: ['Small (Cabin)'],
     specifications: [{ label: 'Tariff Price', value: '60k RWF' }],
@@ -435,7 +443,7 @@ export const PRODUCTS: Product[] = [
     originalPrice: 600000,
     currency: 'RWF',
     category: 'Luggage Sets',
-    images: [IG1, IG2, IG3],
+    images: [IMG_GEMULIN_LUXURY, heroDisplay, luggageSetTrio],
     colors: [
       { name: 'Royal Carbon', hex: '#111827', imageIndex: 0 },
       { name: 'Platinum Silver', hex: '#94a3b8', imageIndex: 1 },
@@ -464,7 +472,7 @@ export const PRODUCTS: Product[] = [
     originalPrice: 280000,
     currency: 'RWF',
     category: 'Large Suitcases',
-    images: [IG1, IG2],
+    images: [IMG_GEMULIN_LUXURY, heroDisplay],
     colors: [{ name: 'Carbon', hex: '#111827', imageIndex: 0 }],
     sizes: ['Large'],
     specifications: [{ label: 'Tariff Price', value: '250k RWF' }],
@@ -486,7 +494,7 @@ export const PRODUCTS: Product[] = [
     originalPrice: 255000,
     currency: 'RWF',
     category: 'Suitcases',
-    images: [IG2, IG3],
+    images: [IMG_GEMULIN_LUXURY, IMG_ALUMINUM_SILVER],
     colors: [{ name: 'Silver', hex: '#94a3b8', imageIndex: 0 }],
     sizes: ['Medium'],
     specifications: [{ label: 'Tariff Price', value: '230k RWF' }],
@@ -508,7 +516,7 @@ export const PRODUCTS: Product[] = [
     originalPrice: 200000,
     currency: 'RWF',
     category: 'Carry-On Luggage',
-    images: [IG3, IG1],
+    images: [carryOnSpinner, IMG_GEMULIN_LUXURY],
     colors: [{ name: 'Carbon', hex: '#111827', imageIndex: 0 }],
     sizes: ['Small (Cabin)'],
     specifications: [{ label: 'Tariff Price', value: '180k RWF' }],
@@ -532,7 +540,7 @@ export const PRODUCTS: Product[] = [
     originalPrice: 35000,
     currency: 'RWF',
     category: 'Travel Accessories',
-    images: [IG5, IG1],
+    images: [travelPillow, IMG_FABRIC_SOFTSIDE],
     colors: [{ name: 'Grey', hex: '#64748b', imageIndex: 0 }],
     sizes: ['Standard'],
     specifications: [{ label: 'Tariff Price', value: '30k RWF' }],
@@ -554,7 +562,7 @@ export const PRODUCTS: Product[] = [
     originalPrice: 65000,
     currency: 'RWF',
     category: 'Travel Accessories',
-    images: [IG5, IG4],
+    images: [travelDuffle, travelPillow],
     colors: [{ name: 'Grey/Black', hex: '#374151', imageIndex: 0 }],
     sizes: ['11-Piece Set'],
     specifications: [
@@ -577,35 +585,36 @@ export const CATEGORIES: CategoryCardData[] = [
     id: 'cat-suitcases',
     name: 'Suitcases & Spinners',
     category: 'Suitcases',
-    image: IG1,
+    image: IMG_ALUMINUM_SILVER,
     itemCount: 4,
   },
   {
     id: 'cat-sets',
     name: 'Luggage Sets',
     category: 'Luggage Sets',
-    image: IG3,
+    image: luggageSetTrio,
     itemCount: 5,
   },
   {
     id: 'cat-carryon',
     name: 'Carry-On Cabin',
     category: 'Carry-On Luggage',
-    image: IG2,
+    image: carryOnSpinner,
     itemCount: 4,
   },
   {
     id: 'cat-large',
     name: 'Large Suitcases',
     category: 'Large Suitcases',
-    image: IG4,
+    image: heroDisplay,
     itemCount: 5,
   },
   {
     id: 'cat-accessories',
     name: 'Travel Accessories',
     category: 'Travel Accessories',
-    image: IG5,
+    image: travelPillow,
     itemCount: 2,
   },
 ];
+
