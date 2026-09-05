@@ -96,6 +96,9 @@ export const ProductDetailView: React.FC = () => {
               src={currentImage}
               alt={selectedProduct.name}
               referrerPolicy="no-referrer"
+              onError={(e) => {
+                (e.target as HTMLImageElement).src = 'https://images.unsplash.com/photo-1581553680321-4fffae59fccd?auto=format&fit=crop&q=80&w=800';
+              }}
               className="w-full h-full object-contain"
             />
           </div>
@@ -117,6 +120,9 @@ export const ProductDetailView: React.FC = () => {
                     src={img}
                     alt={`${selectedProduct.name} view ${idx + 1}`}
                     referrerPolicy="no-referrer"
+                    onError={(e) => {
+                      (e.target as HTMLImageElement).src = 'https://images.unsplash.com/photo-1581553680321-4fffae59fccd?auto=format&fit=crop&q=80&w=800';
+                    }}
                     className="w-full h-full object-contain"
                   />
                 </button>

@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import {
   MessageCircle,
   Check,
+  Smartphone,
 } from 'lucide-react';
 import { useCart } from '../context/CartContext';
 import { useShop } from '../context/ShopContext';
@@ -12,6 +13,7 @@ import {
   getCartWhatsAppUrl,
 } from '../config/business';
 import { CheckoutFormData, OrderRecord } from '../types';
+import { MomoUssdModal } from '../components/MomoUssdModal';
 
 export const CheckoutView: React.FC = () => {
   const { items, subtotal, clearCart } = useCart();
@@ -31,6 +33,7 @@ export const CheckoutView: React.FC = () => {
   const [submittedOrder, setSubmittedOrder] = useState<OrderRecord | null>(null);
   const [formErrors, setFormErrors] = useState<Record<string, string>>({});
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isMomoModalOpen, setIsMomoModalOpen] = useState(false);
 
   // If cart is empty and no submitted order yet
   if (items.length === 0 && !submittedOrder) {
@@ -74,9 +77,36 @@ export const CheckoutView: React.FC = () => {
     return Object.keys(errors).length === 0;
   };
 
+  const handleCompleteOrder = () => {
+    setIsSubmitting(true);
+
+    const newOrder: OrderRecord = {
+      id: `KLS-${Math.floor(100000 + Math.random() * 900000)}`,
+      items: [...items],
+      customer: { ...formData },
+      subtotal,
+      deliveryFee: 0,
+      total: subtotal,
+      status: 'Confirmed',
+      createdAt: new Date().toISOString(),
+    };
+
+    setTimeout(() => {
+      setSubmittedOrder(newOrder);
+      clearCart();
+      setIsSubmitting(false);
+      setIsMomoModalOpen(false);
+    }, 400);
+  };
+
   const handleSubmitOrder = (e: React.FormEvent) => {
     e.preventDefault();
     if (!validateForm()) return;
+
+    if (formData.paymentMethod === 'momo_on_delivery') {
+      setIsMomoModalOpen(true);
+      return;
+    }
 
     setIsSubmitting(true);
 
@@ -421,6 +451,9 @@ export const CheckoutView: React.FC = () => {
                       src={it.product.images[0]}
                       alt={it.product.name}
                       referrerPolicy="no-referrer"
+                      onError={(e) => {
+                        (e.target as HTMLImageElement).src = 'https://images.unsplash.com/photo-1581553680321-4fffae59fccd?auto=format&fit=crop&q=80&w=800';
+                      }}
                       className="w-full h-full object-contain"
                     />
                   </div>
@@ -459,11 +492,19 @@ export const CheckoutView: React.FC = () => {
               disabled={isSubmitting}
               className="w-full py-3.5 px-4 bg-[#18181B] hover:bg-black text-white font-bold text-xs uppercase tracking-wider transition-colors flex items-center justify-center gap-2 cursor-pointer disabled:bg-[#A1A1AA]"
             >
-              {isSubmitting ? 'Processing Order...' : 'Confirm Order (Free Kigali Delivery)'}
+              {isSubmitting ? 'Processing Order...' : formData.paymentMethod === 'momo_on_delivery' ? 'Pay via MoMo USSD (*182*...#)' : 'Confirm Order (Free Kigali Delivery)'}
             </button>
           </div>
         </div>
       </form>
+
+      {/* MTN Mobile Money USSD Phone Simulator Modal */}
+      <MomoUssdModal
+        isOpen={isMomoModalOpen}
+        onClose={() => setIsMomoModalOpen(false)}
+        onSuccess={handleCompleteOrder}
+        amount={subtotal}
+      />
     </div>
   );
 };

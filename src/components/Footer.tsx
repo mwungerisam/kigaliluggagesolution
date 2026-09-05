@@ -2,6 +2,7 @@ import React from 'react';
 import { BUSINESS_CONFIG } from '../config/business';
 import { useShop } from '../context/ShopContext';
 import { ProductCategory } from '../types';
+import { Logo } from './Logo';
 
 export const Footer: React.FC = () => {
   const { navigateTo, navigateToCategory } = useShop();
@@ -21,9 +22,9 @@ export const Footer: React.FC = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10 pb-12 border-b border-[#27272A]">
           {/* Col 1: Brand & Identity */}
           <div className="lg:col-span-5 space-y-4">
-            <span className="font-extrabold text-sm text-white uppercase tracking-[0.2em] block">
-              Kigali Luggage Solution
-            </span>
+            <div className="inline-block bg-white p-3 rounded-xl shadow-sm border border-zinc-700">
+              <Logo variant="light" />
+            </div>
 
             <p className="text-xs text-[#A1A1AA] leading-relaxed max-w-sm">
               Retail destination in Kigali for quality suitcases, carry-ons, luggage sets, and travel gear. Complimentary doorstep delivery within Kigali.
@@ -32,6 +33,7 @@ export const Footer: React.FC = () => {
             <div className="text-xs text-[#D4D4D8] space-y-1 pt-2">
               <p>• Showroom: {BUSINESS_CONFIG.location}</p>
               <p>• Hours: {BUSINESS_CONFIG.openingHours}</p>
+              <p>• Instagram: <a href={BUSINESS_CONFIG.instagramUrl} target="_blank" rel="noopener noreferrer" className="text-white underline hover:text-zinc-300">@{BUSINESS_CONFIG.instagramHandle}</a></p>
               <p>• Direct Telephone: {BUSINESS_CONFIG.phoneDisplay}</p>
             </div>
           </div>

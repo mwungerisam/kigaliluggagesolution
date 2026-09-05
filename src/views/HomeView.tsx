@@ -83,6 +83,9 @@ export const HomeView: React.FC = () => {
                   src={heroDisplay}
                   alt="Kigali Luggage Solution Collection"
                   referrerPolicy="no-referrer"
+                  onError={(e) => {
+                    (e.target as HTMLImageElement).src = 'https://images.unsplash.com/photo-1581553680321-4fffae59fccd?auto=format&fit=crop&q=80&w=800';
+                  }}
                   className="w-full h-full object-cover object-center"
                 />
               </div>
@@ -124,6 +127,9 @@ export const HomeView: React.FC = () => {
                   src={cat.image}
                   alt={cat.name}
                   referrerPolicy="no-referrer"
+                  onError={(e) => {
+                    (e.target as HTMLImageElement).src = 'https://images.unsplash.com/photo-1581553680321-4fffae59fccd?auto=format&fit=crop&q=80&w=800';
+                  }}
                   className="w-full h-full object-contain group-hover:scale-105 transition-transform duration-300"
                 />
               </div>

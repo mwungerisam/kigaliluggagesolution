@@ -28,6 +28,9 @@ export const AddedToCartToast: React.FC = () => {
             src={lastAddedItem.product.images[0]}
             alt={lastAddedItem.product.name}
             referrerPolicy="no-referrer"
+            onError={(e) => {
+              (e.target as HTMLImageElement).src = 'https://images.unsplash.com/photo-1581553680321-4fffae59fccd?auto=format&fit=crop&q=80&w=800';
+            }}
             className="w-full h-full object-contain"
           />
         </div>

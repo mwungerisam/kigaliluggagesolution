@@ -10,6 +10,7 @@ import { useCart } from '../context/CartContext';
 import { useShop, PageView } from '../context/ShopContext';
 import { BUSINESS_CONFIG } from '../config/business';
 import { ProductCategory } from '../types';
+import { Logo } from './Logo';
 
 const NAV_LINKS: { label: string; page: PageView }[] = [
   { label: 'Home', page: 'home' },
@@ -85,19 +86,14 @@ export const Header: React.FC = () => {
             </button>
           </div>
 
-          {/* Brand Logo - Crisp, typographic & understated */}
+          {/* Brand Logo matching official logo */}
           <div className="flex items-center">
             <button
               id="brand-logo-btn"
               onClick={() => handleNavClick('home')}
-              className="flex flex-col text-left group cursor-pointer"
+              className="text-left group cursor-pointer"
             >
-              <span className="font-extrabold text-lg sm:text-xl tracking-tight text-[#18181B] leading-none uppercase">
-                Kigali Luggage <span className="font-light text-[#71717A]">Solution</span>
-              </span>
-              <span className="text-[10px] tracking-[0.2em] font-medium text-[#71717A] uppercase mt-0.5">
-                Kigali • Rwanda
-              </span>
+              <Logo />
             </button>
           </div>
 

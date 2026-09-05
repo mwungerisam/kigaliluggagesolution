@@ -67,6 +67,9 @@ export const ProductQuickView: React.FC = () => {
               src={quickViewProduct.images[activeImage] || quickViewProduct.images[0]}
               alt={quickViewProduct.name}
               referrerPolicy="no-referrer"
+              onError={(e) => {
+                (e.target as HTMLImageElement).src = 'https://images.unsplash.com/photo-1581553680321-4fffae59fccd?auto=format&fit=crop&q=80&w=800';
+              }}
               className="w-full h-full object-contain"
             />
           </div>
@@ -88,6 +91,9 @@ export const ProductQuickView: React.FC = () => {
                     src={img}
                     alt={`${quickViewProduct.name} angle ${idx + 1}`}
                     referrerPolicy="no-referrer"
+                    onError={(e) => {
+                      (e.target as HTMLImageElement).src = 'https://images.unsplash.com/photo-1581553680321-4fffae59fccd?auto=format&fit=crop&q=80&w=800';
+                    }}
                     className="w-full h-full object-contain"
                   />
                 </button>

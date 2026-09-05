@@ -10,7 +10,7 @@ export const BUSINESS_CONFIG = {
   phoneRaw: '+250781157188',
   whatsappNumber: '250781157188',
   instagramHandle: '@kigali_luggage_solution',
-  instagramUrl: 'https://www.instagram.com/kigali_luggage_solution/',
+  instagramUrl: 'https://www.instagram.com/kigali_luggage_solution/?hl=en',
   openingHours: 'Monday – Saturday: 8:00 AM – 7:30 PM | Sunday: 10:00 AM – 5:00 PM',
   currency: 'RWF',
 };
